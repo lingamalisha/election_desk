@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Election Guide · Matdata Sahayak</title>
+  <meta name="description" content="Your AI-powered guide to India's electoral process. Powered by ECI knowledge base."/>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────────── -->
+  <header>
+    <div class="tricolor-strip"><div></div><div></div><div></div></div>
+    <div class="header-content">
+      <svg class="ashoka-wheel" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="3"/>
+        <circle cx="50" cy="50" r="8" fill="rgba(255,255,255,0.9)"/>
+        <g stroke="rgba(255,255,255,0.7)" stroke-width="1.5">
+          <line x1="50" y1="5" x2="50" y2="95"/>
+          <line x1="5" y1="50" x2="95" y2="50"/>
+          <line x1="18" y1="18" x2="82" y2="82"/>
+          <line x1="82" y1="18" x2="18" y2="82"/>
+          <line x1="11" y1="34" x2="89" y2="66"/>
+          <line x1="89" y1="34" x2="11" y2="66"/>
+          <line x1="34" y1="11" x2="66" y2="89"/>
+          <line x1="66" y1="11" x2="34" y2="89"/>
+        </g>
+      </svg>
+      <div class="header-text">
+        <h1>India Election Guide</h1>
+        <p>Powered by ECI Knowledge Base · मतदाता सहायक</p>
+      </div>
+      <div class="badge-eci" aria-label="Election Commission of India">ECI</div>
+    </div>
+  </header>
+
+  <!-- ─── QUICK TOPIC CHIPS ──────────────────────────────────── -->
+  <nav class="quick-topics" aria-label="Quick topic shortcuts" id="quickTopics">
+    <button class="topic-chip" onclick="sendChip(this)">Voter Registration</button>
+    <button class="topic-chip" onclick="sendChip(this)">EVM / VVPAT</button>
+    <button class="topic-chip" onclick="sendChip(this)">Polling Booth</button>
+    <button class="topic-chip" onclick="sendChip(this)">Vote Counting</button>
+    <button class="topic-chip" onclick="sendChip(this)">Government Formation</button>
+    <button class="topic-chip" onclick="sendChip(this)">Voter ID Card</button>
+    <button class="topic-chip" onclick="sendChip(this)">मतदान कैसे करें</button>
+    <button class="topic-chip" onclick="sendChip(this)">NOTA என்றால் என்ன?</button>
+  </nav>
+
+  <!-- ─── CHAT AREA ──────────────────────────────────────────── -->
+  <main class="chat-area" id="chatArea" aria-live="polite" aria-label="Chat messages">
+    <div class="message" role="article" aria-label="Assistant message">
+      <div class="avatar bot" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="bubble bot">
+        <strong>Jai Hind! 🇮🇳</strong> Welcome to the India Election Guide.<br><br>
+        I can help you with questions about:<br>
+        <ul>
+          <li>Voter registration &amp; Voter ID</li>
+          <li>How EVMs and VVPATs work</li>
+          <li>Finding your polling booth</li>
+          <li>How votes are counted</li>
+          <li>Government formation after elections</li>
+        </ul>
+        <br>You can ask me in <strong>English, Hindi, Tamil, Telugu</strong> or any Indian language!<br><br>
+        <em>What would you like to know? / आप क्या जानना चाहते हैं?</em>
+      </div>
+    </div>
+  </main>
+
+  <!-- ─── INPUT AREA ─────────────────────────────────────────── -->
+  <section class="input-area">
+    <div class="input-row">
+      <label for="userInput" class="sr-only">Type your question about elections</label>
+      <textarea
+        id="userInput"
+        placeholder="Ask about voting, registration, EVMs... / मतदान के बारे में पूछें..."
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoGrow(this)"
+        aria-label="Your question"
+      ></textarea>
+      <button id="sendBtn" onclick="handleSend()" aria-label="Send message">
+        <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── HELPLINE BAR ───────────────────────────────────────── -->
+  <footer class="helpline-bar">
+    Voter Helpline: <a href="tel:1950" aria-label="Call Voter Helpline 1950">1950</a>
+    &nbsp;|&nbsp;
+    <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer">voters.eci.gov.in</a>
+  </footer>
+
+  <script src="src/config.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

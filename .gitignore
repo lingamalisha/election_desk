@@ -1,0 +1,22 @@
+# API keys — NEVER commit these
+src/secrets.js
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Node (if using a proxy server)
+node_modules/
+npm-debug.log*
+
+# Build output
+dist/
+build/
